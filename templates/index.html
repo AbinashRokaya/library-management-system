@@ -1,0 +1,58 @@
+{% extends "base.html" %} {% block content %}
+
+<!-- All the book list -->
+<table class="table table-dark table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Book ID</th>
+      <th scope="col">Book Name</th>
+      <th scope="col">Category</th>
+      <th scope="col">Edition</th>
+      <th scope="col">Copies</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for b in book %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{b.id}}</td>
+      <td>{{b.name}}</td>
+      <td>{{b.category_id.category_name}}</td>
+      <td>{{b.edition}}</td>
+      <td>{{b.copies}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<!-- pagination page  -->
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    {% if book.has_previous %}
+    <li class="page-item">
+      <a class="page-link" href="/?page=1">First</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="/?page={{book.previous_page_number}}"
+        >Previous</a
+      >
+    </li>
+    {% endif %} {% for n in totalpagelist %}
+    <li class="page-item active" aria-current="page">
+      <a class="page-link" href="/?page={{n}}">{{n}}</a>
+    </li>
+    {% endfor %} {% if book.has_next %}
+    <li class="page-item">
+      <a class="page-link" href="/?page={{serviceData.next_page_number}}"
+        >Next Page</a
+      >
+    </li>
+    {% endif %}
+    <li class="page-item">
+      <a class="page-link" href="/?page={{lastpage}}">Last Page</a>
+    </li>
+  </ul>
+</nav>
+
+{% endblock %}

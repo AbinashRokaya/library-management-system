@@ -1,0 +1,12 @@
+.alert {
+    display: none; /* Hidden by default */
+    padding: 10px;
+    background-color: #00FF7F; /* Red color */
+    color: white;
+    position: fixed;
+    top: 10px;
+    right: 200px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}

@@ -1,0 +1,130 @@
+{% extends "base.html" %} {% block content %}
+<div class="page-wrapper bg-red p-t-180 p-b-100 font-robo">
+  <div class="wrapper wrapper--w960">
+    <div class="card card-2">
+      <div class="card-heading"></div>
+      <div class="card-body">
+        <h2 class="title">Borrower Book</h2>
+
+        <!---------------- Adding book form ------------------>
+        <form method="POST">
+          {% csrf_token %}
+
+          <!------------- message ------------>
+          {% if messages %} {% for message in messages%}
+          <div
+            class="alert alert-warning alert-dismissible fade show"
+            role="alert"
+          >
+            {{message}}
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="alert"
+              aria-label="Close"
+            ></button>
+          </div>
+          {% endfor %} {% endif %}
+
+          <!-------------- input field  -------------->
+
+          <!-- book Name -->
+          <div class="input-group">
+            <input
+              class="input--style-2"
+              type="text"
+              placeholder="Book Name"
+              name="book"
+            />
+          </div>
+
+          <!-- publisher Name -->
+          <div class="input-group">
+            <input
+              class="input--style-2"
+              type="text"
+              placeholder="Publisher Name"
+              name="publisher"
+            />
+          </div>
+
+          <!-- author Name -->
+          <div class="input-group">
+            <input
+              class="input--style-2"
+              type="text"
+              placeholder="Author Name"
+              name="author"
+            />
+          </div>
+
+          <!-- book edition -->
+          <div class="row row-space">
+            <div class="col-2">
+              <div class="input-group">
+                <input
+                  class="input--style-2"
+                  type="number"
+                  placeholder="Edition"
+                  name="edition"
+                />
+              </div>
+            </div>
+
+            <!-- Book Cost -->
+            <div class="col-2">
+              <div class="input-group">
+                <input
+                  class="input--style-2"
+                  type="number"
+                  placeholder="Cost"
+                  name="cost"
+                />
+              </div>
+            </div>
+
+            <!-- book copies -->
+          </div>
+          <div class="row row-space">
+            <div class="col-2">
+              <div class="input-group">
+                <input
+                  class="input--style-2"
+                  type="number"
+                  placeholder="Copies"
+                  name="copies"
+                />
+              </div>
+
+              <!-- book category -->
+            </div>
+            <div class="col-2">
+              <div class="input-group">
+                <div class="rs-select2 js-select-simple select--no-search">
+                  <select name="category">
+                    <option selected="selected">Category</option>
+                    <option>Fantasy</option>
+                    <option>Science Fiction</option>
+                    <option>Mystery</option>
+                    <option>Thriller</option>
+                    <option>Romance</option>
+                    <option>Historical Fiction</option>
+                  </select>
+                  <div class="select-dropdown"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- submit button -->
+          <div class="p-t-30">
+            <button class="btn btn--radius btn--green" type="submit">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

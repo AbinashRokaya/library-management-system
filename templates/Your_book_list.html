@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block content %}
+
+<!-- Borrower book list -->
+<table class="table table-dark table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Borrowers ID</th>
+      <th scope="col">Book ID</th>
+      <th scope="col">Boook Name</th>
+      <th scope="col">Release Date</th>
+      <th scope="col">Due Date</th>
+      <th scope="col">Fine Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for b in borrow_book_list %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{b.id}}</td>
+      <td>{{b.book_id}}</td>
+      <td>{{b.name}}</td>
+      <td>{{b.release}}</td>
+      <td>{{b.due}}</td>
+      <td>{{b.fine_amount}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
